@@ -44,7 +44,7 @@ class HashTable:
 
         Implement this.
         """
-        return self.elements // self.get_num_slots()
+        return self.elements / self.get_num_slots()
 
     def fnv1(self, key):
         """
@@ -160,8 +160,16 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
-        pass
+        self.capacity = int(new_cap)
+        old = self.table
+        self.table = [None] * self.capacity
+        for element in old:
+            current = element
+            if element is not None:
+                self.put(element.key, element.value)
+                while current.next is not None:
+                    current = current.next
+                    self.put(current.key, current.value)
 
 
 if __name__ == "__main__":
