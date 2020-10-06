@@ -1,6 +1,13 @@
 def no_dups(s):
-    # Your code here
-
+    s = s.split(" ")
+    news = ""
+    if len(s) == 0:
+        return ""
+    for i in s:
+        if i not in news:
+            news += " " + i
+    news = news.strip()
+    return news
 
 
 if __name__ == "__main__":
